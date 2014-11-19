@@ -2,7 +2,7 @@ package org.rslick
 
 import scala.collection.mutable.ListBuffer
 import scala.slick.driver.JdbcDriver.backend.Database
-import scala.slick.jdbc.{StaticQuery => Q, PositionedResult, GetResult}
+import scala.slick.jdbc.{GetResult, PositionedResult, StaticQuery => Q}
 
 class SqlExecuter(url: String, driver: String, user: String, password: String) {
   implicit object GetString extends GetResult[String] {
