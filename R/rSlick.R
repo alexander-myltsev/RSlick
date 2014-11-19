@@ -15,5 +15,11 @@ slick.session <- function(url, driver, user, password) {
 #' @export
 slick.sql <- function(session, sql, ...) {
   params <- c(...)
-  session$execute(sql, names(params), as.character(params))
+  list <- session$execute(sql, names(params), as.character(params))
+  res <- c()
+  while (list$size() > 0) {
+    res <- c(res, list$head())
+    list <- list$tail()
+  }
+  return(res)
 }
