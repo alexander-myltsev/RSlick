@@ -6,5 +6,37 @@
 
 # R data files from past sessions
 .Rdata
+.RData
 
 .Rproj.user/
+.Rproj.user
+rSlick.Rproj
+
+# SBT
+boot/
+lib_managed/
+src_managed/
+test-output/
+target/
+.history
+
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Eclipse
+.cache
+.classpath
+.project
+.scala_dependencies
+.settings
+.target/
+
+# Mac
+.DS_Store
+
+# Other
+*.pyc

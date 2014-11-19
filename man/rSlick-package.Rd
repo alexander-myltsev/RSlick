@@ -1,6 +1,6 @@
-\name{rAnorm-package}
-\alias{rAnorm-package}
-\alias{rAnorm}
+\name{rSlick-package}
+\alias{rSlick-package}
+\alias{rSlick}
 \docType{package}
 \title{
 What the package does (short line)
@@ -12,7 +12,7 @@ More about what it does (maybe more than one line)
 }
 \details{
 \tabular{ll}{
-Package: \tab rAnorm\cr
+Package: \tab rSlick\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
 Date: \tab 2014-11-14\cr
@@ -29,8 +29,10 @@ Maintainer: Who to complain to <yourfault@somewhere.net>
 \references{
 ~~ Literature or other references for background information ~~
 }
+\keyword{
 ~~ Optionally other standard keywords, one per line, from file KEYWORDS in the R documentation directory ~~
-\keyword{ package }
+package 
+}
 \seealso{
 ~~ Optional links to other man pages, e.g. ~~
 ~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
