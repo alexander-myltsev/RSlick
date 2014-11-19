@@ -19,10 +19,10 @@ class SqlExecuter(url: String, driver: String, user: String, password: String) {
     }
   }
 
-  def execute(sql: java.lang.String): java.util.List[java.lang.String] = {
+  def execute(sqlTemplate: String, names: Array[String], values: Array[String]): Array[String] = {
     Database.forURL(url, driver = driver, user = user, password = password) withSession { implicit session =>
-      import scala.collection.JavaConversions.seqAsJavaList
-      Q.queryNA[String](sql).list
+      val sql = names.zip(values).foldLeft(sqlTemplate) { case (s, (n, v)) => s.replace(s"""{{$n}}""", v) }
+      Q.queryNA[String](sql).list.toArray
     }
   }
 }
