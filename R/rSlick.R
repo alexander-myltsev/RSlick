@@ -1,9 +1,14 @@
 require(rJava)
 
-#' Creates rSlick session that should be called on in slick.sql
+#' Creates rSlick session that should be provided to slick.sql
+#' 
+#' @param url URL to database
+#' @param driver JDBC driver to be used for connection
+#' @param user User name that has access to database
+#' @param password User password that has access to database
 #' 
 #' @export
-slick.session1 <- function(url, driver, user, password) {
+slick.session <- function(url, driver, user, password) {
   .jnew("org.rslick.SqlExecuter", url, driver, user, password)
 }
 
