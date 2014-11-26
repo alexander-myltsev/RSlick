@@ -4,7 +4,7 @@ path <- paste(dirname(system.file(".",package="rSlick")), .Platform$file.sep, ""
 lib.java.path <- paste(path, "java", sep="")
 dir.create(lib.java.path, recursive=TRUE, showWarnings=FALSE)
 setwd(lib.java.path)
-rSlick.jars <- c("rSlick-lib-0.1.jar", "mysql-connector-java-5.1.12.jar")
+rSlick.jars <- c("rSlick-lib-0.1.0.jar", "mysql-connector-java-5.1.12.jar")
 
 download.sites <- c("file:///home/alex/tmp/", "http://github.com/alexander-myltsev/rSlick/releases/download/v0.1/")
 for ( jarName in rSlick.jars ) {
