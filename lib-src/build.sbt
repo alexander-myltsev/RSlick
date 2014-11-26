@@ -9,4 +9,4 @@ libraryDependencies ++= Seq(
   "org.slf4j"                      % "slf4j-simple"         % "1.6.1"
 )
 
-assemblyJarName in assembly := s"rSlick-lib-${version.value}.jar"
+assemblyJarName in assembly := s"RSlick-lib-${version.value}.jar"

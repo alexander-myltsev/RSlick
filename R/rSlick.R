@@ -1,6 +1,6 @@
 require(rJava)
 
-#' Creates rSlick session that should be provided to slick.sql
+#' Creates RSlick session that should be provided to slick.sql
 #' 
 #' @param url URL to database
 #' @param driver JDBC driver to be used for connection

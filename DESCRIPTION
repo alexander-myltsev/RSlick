@@ -1,14 +1,16 @@
-Package: rSlick
+Package: RSlick
 Type: Package
 Title: SQL templating package
 Version: 0.1.0
 Date: 2014-11-14
 Author: Sergey Izrailev, Alexander Myltsev
 Maintainer: Alexander Myltsev <alexander.myltsev@phystech.edu>
-Description: Cross-platform, self-contained packange for running SQL statements with embedded templating language
+Description: Cross-platform, self-contained packange for running SQL statements
+    with embedded templating language
 License: Apache 2 [http://www.apache.org/licenses/LICENSE-2.0]
 NeedsCompilation: no
-Imports: rJava
+Imports:
+    rJava
 SystemRequirements: Java (>= 1.6)
-URL: https://github.com/alexander-myltsev/rSlick
-BugReports:  https://github.com/alexander-myltsev/rSlick/issues
+URL: https://github.com/alexander-myltsev/RSlick
+BugReports: https://github.com/alexander-myltsev/RSlick/issues
