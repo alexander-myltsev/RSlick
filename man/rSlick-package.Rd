@@ -21,6 +21,8 @@ Version: \tab 0.1\cr
 Date: \tab 2014-11-14\cr
 License: \tab Apache 2 [http://www.apache.org/licenses/LICENSE-2.0]\cr
 }
+}
+
 \usage{
 > library(devtools); devtools::install_github("alexander-myltsev/rSlick")
 > library(rSlick)
@@ -33,7 +35,6 @@ sql is an SQL template. SQL templates are plain strings that contain arguments i
 
 "SELECT * FROM test WHERE id > {{id}}" is SQL template. Substring "{{id}}" will be substituted by string "2" as named argument "id=2" is provided. "SELECT * FROM test WHERE id > 2" will be executed against created session.
 
-}
 }
 
 \examples{
