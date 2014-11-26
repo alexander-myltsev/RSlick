@@ -23,7 +23,7 @@ class SqlExecuter(url: String, driver: String, user: String, password: String) {
     execute(sqlTemplate, Array(name), Array(value))
 
   def execute(sqlTemplate: String, names: Array[String], values: Array[String]): List[String] = {
-    Database.forURL(url, driver = driver, user = user, password = password) withSession { implicit session =>
+    Database.forURL(url, driver = driver, user = user, password = password).withSession { implicit session =>
       val r = if (names == null || values == null) {
         Q.queryNA[String](sqlTemplate)
       } else {

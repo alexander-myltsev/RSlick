@@ -8,4 +8,4 @@ libraryDependencies ++= Seq(
   "com.typesafe.slick"             %% "slick"              % "2.1.0"
 )
 
-assemblyJarName in assembly := "rSlick-lib.jar"
+assemblyJarName in assembly := s"rSlick-lib-${version.value}.jar"

@@ -1,4 +1,6 @@
 .onLoad <- function(libname, pkgname) {
   require(rJava)
-  .jinit(classpath = c("./lib/rSlick-lib.jar"))
+  cp = as.character(sapply(rSlick.jars, 
+                           function(jar) { paste(lib.java.path, .Platform$file.sep, jar, sep="") } ))
+  .jinit(classpath =  cp)
 }
