@@ -30,23 +30,34 @@ slick.sql(session, "SELECT * FROM test WHERE id > {{id}}", id=2)
 }
 
 \examples{
-library(devtools); devtools::install_github("alexander-myltsev/RSlick")
-library(RSlick)
-
-session <- slick.session(url = "jdbc:mysql://localhost:3306/test", driver = "com.mysql.jdbc.Driver", user = "user", password = "password")
-slick.sql(session, "SELECT * FROM test")
-[1] "(3, kdeee, cc)" "(7, test, eem)" "(7, test, eem)" "(7, test, eem)" "(7, test, eem)" "(7, test, eem)"
-[7] "(1, a, hhh)"    "(2, b, hhh)"
-slick.sql(session, sql = "SELECT * FROM test WHERE id > {{id}}", id=2)
-executing SQL: SELECT * FROM test WHERE id > 2
-[1] "(3, kdeee, cc)" "(7, test, eem)" "(7, test, eem)" "(7, test, eem)" "(7, test, eem)" "(7, test, eem)"
-# sql is an SQL template. SQL templates are plain strings that contain arguments in double curly brackets. Arguments will be substituted by provided named values. For exapmle, in statement "SELECT * FROM test WHERE id > {{id}}" is SQL template. Substring "{{id}}" will be substituted by string "2" as named argument "id=2" is provided. "SELECT * FROM test WHERE id > 2" will be executed against created session.
-slick.sql(session, "INSERT INTO test (id, name, vaule) VALUES (10, 'X', {{v}}), (20, 'Y', {{v}})", v="'hhh'") # returns number of successfully added rows
-executing SQL: INSERT INTO test (id, name, vaule) VALUES (10, 'X', 'hhh'), (20, 'Y', 'hhh')
-[1] 2
-slick.sql(session, "SELECT * FROM test WHERE id > {{id}}", id=9)
-executing SQL: SELECT * FROM test WHERE id > 9
-[1] "(10, X, hhh)" "(20, Y, hhh)"
+session <- slick.session("jdbc:h2:mem:test1", "org.h2.Driver")
+slick.sql(session, 'create table "TEST" ("ID" INTEGER NOT NULL PRIMARY KEY,  "NAME" VARCHAR NOT NULL)')
+# executing SQL: create table "TEST" ("ID" INTEGER NOT NULL PRIMARY KEY,  "NAME" VARCHAR NOT NULL)
+# [1] 0
+slick.sql(session, 'insert into "TEST" ("ID","NAME") values (1, \'abc\'), (2, \'efg\'), (3, \'kkk\')')
+# executing SQL: insert into "TEST" ("ID","NAME") values (1, 'abc'), (2, 'efg'), (3, 'kkk')
+# [1] 3
+slick.sql(session, 'insert into "TEST" ("ID","NAME") values (10, \'abc\'), (20, {{v}}), (30, {{v}})', v="'kkkkk'")
+# executing SQL: insert into "TEST" ("ID","NAME") values (10, 'abc'), (20, 'kkkkk'), (30, 'kkkkk')
+# [1] 3
+slick.sql(session, 'select * from "TEST"')
+# executing SQL: select * from "TEST"
+# [1] "(1, abc)"    "(2, efg)"    "(3, kkk)"    "(10, abc)"   "(20, kkkkk)" "(30, kkkkk)"
+slick.sql(session, 'select * from "TEST" where "ID" > {{id}}', id=2)
+# executing SQL: select * from "TEST" where "ID" > 2
+# [1] "(3, kkk)"    "(10, abc)"   "(20, kkkkk)" "(30, kkkkk)"
+slick.sql(session, 'update "TEST" set "NAME"={{v}} where "ID" > {{id}}', id=2, v="'hhhhhhhh'")
+# executing SQL: update "TEST" set "NAME"='hhhhhhhh' where "ID" > 2
+# [1] 4
+slick.sql(session, 'select * from "TEST"')
+# executing SQL: select * from "TEST"
+# [1] "(1, abc)"       "(2, efg)"       "(3, hhhhhhhh)"  "(10, hhhhhhhh)" "(20, hhhhhhhh)" "(30, hhhhhhhh)"
+slick.sql(session, 'delete from "TEST" where "ID" > {{id1}} and "ID" < {{id2}}', id1=2, id2=25)
+# executing SQL: delete from "TEST" where "ID" > 2 and "ID" < 25
+# [1] 3
+slick.sql(session, 'select * from "TEST"')
+# executing SQL: select * from "TEST"
+# [1] "(1, abc)"       "(2, efg)"       "(30, hhhhhhhh)"
 }
 
 

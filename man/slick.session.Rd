@@ -3,7 +3,7 @@
 \alias{slick.session}
 \title{Creates RSlick session that should be provided to slick.sql}
 \usage{
-slick.session(url, driver, user, password)
+slick.session(url, driver, user = "", password = "")
 }
 \arguments{
 \item{url}{URL to database}
