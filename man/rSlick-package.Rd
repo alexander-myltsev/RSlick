@@ -32,6 +32,8 @@ slick.sql(session, "SELECT * FROM test WHERE id > {{id}}", id=2)
 }
 
 \examples{
+require(rJava)
+slick.init()
 session <- slick.session("jdbc:h2:mem:test1", "org.h2.Driver")
 slick.sql(session, 'create table "TEST" ("ID" INTEGER NOT NULL PRIMARY KEY,  "NAME" VARCHAR NOT NULL)')
 # executing SQL: create table "TEST" ("ID" INTEGER NOT NULL PRIMARY KEY,  "NAME" VARCHAR NOT NULL)
