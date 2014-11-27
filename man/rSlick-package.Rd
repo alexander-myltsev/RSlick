@@ -10,7 +10,8 @@ Cross-platform, self-contained packange for running SQL statements.
 The package provides unified interface for all types of SQL statements.
 It is shipped with SQL templating language that expands to SQL statement before run.
 Supported JDBC drivers:
-* mysql-connector-java-5.1.12.jar
+* MySQL: mysql-connector-java-5.1.12.jar
+* H2: h2-1.4.182.jar
 }
 
 \details{
@@ -24,6 +25,7 @@ License: \tab Apache 2 [http://www.apache.org/licenses/LICENSE-2.0]\cr
 }
 
 \usage{
+slick.init() # Or you can extend classpath with new JDBC jars: slick.init(c("./drivers/MY-JDBC-1.2.3.jar"))
 session <- slick.session(url, driver, user, password) # creates connection session to database
 slick.sql(session, sql, ...) # runs SQL statement against created session
 slick.sql(session, "SELECT * FROM test WHERE id > {{id}}", id=2)

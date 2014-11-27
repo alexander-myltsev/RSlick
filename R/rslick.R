@@ -1,5 +1,14 @@
 require(rJava)
 
+#' Initializes RSlick
+#' 
+#' @param classpath Classpath that is provided to JVM to search for new JDBC drivers
+#' 
+#' @export
+slick.init <- function(classpath = c()) {
+  .jpackage("RSlick", morePaths=c(".", classpath))
+}
+
 #' Creates RSlick session that should be provided to slick.sql
 #' 
 #' @param url URL to database
