@@ -8,8 +8,8 @@ require(rJava)
 #' @param password User password that has access to database
 #' 
 #' @export
-slick.session <- function(url, driver, user, password) {
-  .jnew("org.rslick.SqlExecuter", url, driver, user, password)
+slick.session <- function(url, driver, user = "", password = "") {
+  .jcall("org/rslick/SqlExecuter", "Lscala/slick/jdbc/JdbcBackend$SessionDef;", "session", url, driver, user, password)
 }
 
 #' Evaluates given sql template against created session
@@ -20,7 +20,7 @@ slick.session <- function(url, driver, user, password) {
 #' @export
 slick.sql <- function(session, sql, ...) {
   params <- c(...)
-  list <- session$execute(sql, names(params), as.character(params))
+  list <- .jcall("org/rslick/SqlExecuter", "Lscala/collection/immutable/List;", "execute", session, sql, as.character(names(params)), as.character(params))
   res <- c()
   while (list$size() > 0) {
     res <- c(res, list$head())
