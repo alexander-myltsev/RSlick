@@ -5,6 +5,9 @@
 \usage{
 slick.init(classpath = c())
 }
+\arguments{
+\item{classpath}{Classpath that is provided to JVM to search for new JDBC drivers}
+}
 \description{
 Initializes RSlick
 }
