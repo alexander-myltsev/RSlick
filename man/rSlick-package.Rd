@@ -64,7 +64,7 @@ slick.sql(session, 'select * from "TEST"')
 
 
 \references{
-RSlick is a wrapper of Scala Slick library. Scala Slick plain queries [http://slick.typesafe.com/doc/2.1.0/upgrade.html#static-plain-sql-queries] are used under the hood while running SQL statements.
+RSlick is a wrapper package of Scala Slick library [http://slick.typesafe.com]. Scala Slick plain queries [http://slick.typesafe.com/doc/2.1.0/upgrade.html#static-plain-sql-queries] are used under the hood while running SQL statements.
 }
 
 \author{
