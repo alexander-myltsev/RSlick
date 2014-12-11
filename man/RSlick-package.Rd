@@ -35,30 +35,30 @@ session <- slick.session("jdbc:h2:mem:test1", "org.h2.Driver")
 slick.sql(session, 'create table "TEST" ("ID" INTEGER NOT NULL PRIMARY KEY,  "NAME" VARCHAR NOT NULL)')
 # executing SQL: create table "TEST" ("ID" INTEGER NOT NULL PRIMARY KEY,  "NAME" VARCHAR NOT NULL)
 # [1] 0
-slick.sql(session, 'insert into "TEST" ("ID","NAME") values (1, \'abc\'), (2, \'efg\'), (3, \'kkk\')')
-# executing SQL: insert into "TEST" ("ID","NAME") values (1, 'abc'), (2, 'efg'), (3, 'kkk')
+slick.sql(session, 'insert into "TEST" ("ID","NAME") values (1, \'name1\'), (2, \'name2\'), (3, \'name3\')')
+# executing SQL: insert into "TEST" ("ID","NAME") values (1, 'name1'), (2, 'name2'), (3, 'name3')
 # [1] 3
-slick.sql(session, 'insert into "TEST" ("ID","NAME") values (10, \'abc\'), (20, {{v}}), (30, {{v}})', v="'kkkkk'")
-# executing SQL: insert into "TEST" ("ID","NAME") values (10, 'abc'), (20, 'kkkkk'), (30, 'kkkkk')
+slick.sql(session, 'insert into "TEST" ("ID","NAME") values (10, \'abc\'), (20, {{v}}), (30, {{v}})', v="'some_name'")
+# executing SQL: insert into "TEST" ("ID","NAME") values (10, 'abc'), (20, 'some_name'), (30, 'some_name')
 # [1] 3
 slick.sql(session, 'select * from "TEST"')
 # executing SQL: select * from "TEST"
-# [1] "(1, abc)"    "(2, efg)"    "(3, kkk)"    "(10, abc)"   "(20, kkkkk)" "(30, kkkkk)"
+# [1] "(1, name1)"      "(2, name2)"      "(3, name3)"      "(10, abc)"       "(20, some_name)" "(30, some_name)"
 slick.sql(session, 'select * from "TEST" where "ID" > {{id}}', id=2)
 # executing SQL: select * from "TEST" where "ID" > 2
-# [1] "(3, kkk)"    "(10, abc)"   "(20, kkkkk)" "(30, kkkkk)"
-slick.sql(session, 'update "TEST" set "NAME"={{v}} where "ID" > {{id}}', id=2, v="'hhhhhhhh'")
-# executing SQL: update "TEST" set "NAME"='hhhhhhhh' where "ID" > 2
+# [1] "(3, name3)"      "(10, abc)"       "(20, some_name)" "(30, some_name)"
+slick.sql(session, 'update "TEST" set "NAME"={{v}} where "ID" > {{id}}', id=2, v="'new_name'")
+# executing SQL: update "TEST" set "NAME"='new_name' where "ID" > 2
 # [1] 4
 slick.sql(session, 'select * from "TEST"')
 # executing SQL: select * from "TEST"
-# [1] "(1, abc)"       "(2, efg)"       "(3, hhhhhhhh)"  "(10, hhhhhhhh)" "(20, hhhhhhhh)" "(30, hhhhhhhh)"
+# [1] "(1, name1)"     "(2, name2)"     "(3, new_name)"  "(10, new_name)" "(20, new_name)" "(30, new_name)"
 slick.sql(session, 'delete from "TEST" where "ID" > {{id1}} and "ID" < {{id2}}', id1=2, id2=25)
 # executing SQL: delete from "TEST" where "ID" > 2 and "ID" < 25
 # [1] 3
 slick.sql(session, 'select * from "TEST"')
 # executing SQL: select * from "TEST"
-# [1] "(1, abc)"       "(2, efg)"       "(30, hhhhhhhh)"
+# [1] "(1, name1)"     "(2, name2)"     "(30, new_name)"
 }
 
 
