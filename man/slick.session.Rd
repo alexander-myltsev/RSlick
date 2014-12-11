@@ -3,9 +3,11 @@
 \alias{slick.session}
 \title{Creates RSlick session that should be provided to slick.sql}
 \usage{
-slick.session(url, driver, user = "", password = "")
+slick.session(classpath = c(), url, driver, user = "", password = "")
 }
 \arguments{
+\item{classpath}{Classpath that is provided to JVM to search for new JDBC drivers}
+
 \item{url}{URL to database}
 
 \item{driver}{JDBC driver to be used for connection}

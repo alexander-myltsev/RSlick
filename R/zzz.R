@@ -1,5 +1,3 @@
-slick.classpath = c()
-
 cwd <- getwd()
 
 path <- paste(dirname(system.file(".",package="RSlick")), .Platform$file.sep, "", sep="")

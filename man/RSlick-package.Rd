@@ -25,15 +25,12 @@ License: \tab Apache 2 [http://www.apache.org/licenses/LICENSE-2.0]\cr
 }
 
 \usage{
-slick.init() # Or you can extend classpath with new JDBC jars: slick.init(c("./drivers/MY-JDBC-1.2.3.jar"))
 session <- slick.session(url, driver, user, password) # creates connection session to database
 slick.sql(session, sql, ...) # runs SQL statement against created session
 slick.sql(session, "SELECT * FROM test WHERE id > {{id}}", id=2)
 }
 
 \examples{
-require(rJava)
-slick.init()
 session <- slick.session("jdbc:h2:mem:test1", "org.h2.Driver")
 slick.sql(session, 'create table "TEST" ("ID" INTEGER NOT NULL PRIMARY KEY,  "NAME" VARCHAR NOT NULL)')
 # executing SQL: create table "TEST" ("ID" INTEGER NOT NULL PRIMARY KEY,  "NAME" VARCHAR NOT NULL)
