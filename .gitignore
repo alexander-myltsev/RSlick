@@ -40,3 +40,6 @@ out/
 
 # Other
 *.pyc
+java/lib/h2-1.4.182.jar
+java/lib/mysql-connector-java-5.1.12.jar
+tmp/
